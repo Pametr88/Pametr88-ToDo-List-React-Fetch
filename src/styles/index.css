@@ -1,3 +1,11 @@
+.list-container {
+    background-image: url(https://img.freepik.com/foto-gratis/papel-pared-colorido-grafico-2d-degradados-granulados_23-2151001613.jpg?w=360&t=st=1710809834~exp=1710810434~hmac=fc30481402299859d6c730a9789b47cbc84a3d76bfaea5c65ffa15f504203f32);
+    border: 2px solid #48bfe4;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 50px 100px 20px 100px;
+}
+
 .container {
     background-color: lightcoral;
 }
@@ -5,8 +13,10 @@
 .title {
     color: rgb(116, 21, 21);
     text-align: center;
+    margin: auto;
     margin-top: 80px;
     margin-bottom: 20px;
+    width: 50%;
     font-family: 'Lucida Sans';
     background-color: lightcoral;
     text-wrap: 200px;

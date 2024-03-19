@@ -3,9 +3,11 @@ const Home = () => {
 	const [inputValue, setInputValue] = useState("");
 	const [toDos, setToDos] = useState([]);
 	useEffect(() => {
-		takeList() }, [])
-	useEffect(() => { 
-		sendList() }, [toDos]);
+		takeList()
+	}, [])
+	useEffect(() => {
+		sendList()
+	}, [toDos]);
 
 	const takeList = async () => {
 		try {
@@ -25,7 +27,7 @@ const Home = () => {
 	const sendList = async () => {
 		try {
 			const response = await fetch('https://playground.4geeks.com/apis/fake/todos/user/pametr88', {
-				
+
 				method: "PUT",
 				body: JSON.stringify(toDos),
 				headers: {
@@ -34,7 +36,7 @@ const Home = () => {
 			})
 			if (!response.ok) {
 				throw Error(response.statusText);
-			} 
+			}
 			const transform = await response.json()
 			console.log(transform.msg)
 
@@ -50,10 +52,10 @@ const Home = () => {
 					label: inputValue,
 					done: false
 				}
-				
+
 				setToDos([...toDos, obj]);
-				setInputValue(""); 
-				
+				setInputValue("");
+
 				const final = await sendList()
 				console.log("informacion enviada", final)
 			}
@@ -63,7 +65,9 @@ const Home = () => {
 		}
 	}
 
-	return (<div className="Container">
+	return (
+		<div className="list-container">
+			<div className="Container">
 				<h1 className="title">To Do List</h1>
 				<ul className="list-group">
 					<input
@@ -72,24 +76,25 @@ const Home = () => {
 						value={inputValue}
 						onKeyDown={(e) => pressEnter(e)}
 						placeholder="What do you need to do?" />
-						
+
 					{toDos.map((item, index) => (
-					<li className="list-group-item li-c" key={index}>
-						{item.label}
-						<button onClick={() => {
-							const updatedToDos = toDos.filter(
-								(_, currentIndex) => index != currentIndex
-							); 
-						
-						setToDos(updatedToDos);
-						}}>
-						<i className= "fa-solid fa-trash-can"></i>
-						</button>
-					</li>
+						<li className="list-group-item li-c" key={index}>
+							{item.label}
+							<button onClick={() => {
+								const updatedToDos = toDos.filter(
+									(_, currentIndex) => index != currentIndex
+								);
+
+								setToDos(updatedToDos);
+							}}>
+								<i className="fa-solid fa-trash-can"></i>
+							</button>
+						</li>
 					))}
 				</ul>
 				<div className="items">{toDos.length} items left</div>
 			</div>
-	    );
+		</div>
+	);
 };
 export default Home;
